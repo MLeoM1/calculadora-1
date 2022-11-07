@@ -1,15 +1,16 @@
-let nombreIngresado = prompt("Ingrese su nombre");
+let nombreIngresado = prompt("Ingrese su nombre:");
 while(nombreIngresado == ""){
-    nombreIngresado = prompt("Ingrese un nombre");
+    nombreIngresado = prompt("Ingrese un nombre:");
 }
+console.log(nombreIngresado.toUpperCase());
 alert("¡Bienvenido " + nombreIngresado + " a probar nuestra calculadora!");
 
-let x = prompt("(1)Operaciones A: Suma - Resta - multiplicacion - division.\n(2)Operaciones B: promedio - porcentaje.\n(3)Area: Circulo - Cuadrado - Rectangulo - Triangulo.\n(4)Perimetro: Circulo - Cuadrado - Rectangulo - Triangulo.\n(5)salir");
+let x = prompt("(1)Operaciones A: Suma - Resta - multiplicacion - division.\n(2)Operaciones B: promedio - porcentaje.\n(3)Area: Circulo - Cuadrado - Rectangulo - Triangulo.\n(4)Perimetro: Circulo - Cuadrado - Rectangulo - Triangulo.\n(0)salir");
 
-while(x != 5){
-    while(x == 1){
+while(x != 0){
+    if(x == 1){
         let a = parseInt(prompt("Operaciones A:\nElija una operacion:\nSuma(1) - Resta(2) - multiplicacion(3) - division(4) - salir(5)"));
-        while(x != 5){
+        while(a != 5){
             if (a == 1){
                 suma ();
             }
@@ -22,9 +23,12 @@ while(x != 5){
             if (a == 4){
                 division ();
             }
+            if (a == 5){
+                alert("Gracias por usar nuestra calculadora");
+            }
         }
     }
-    while(x == 2){
+    if(x == 2){
         let b = parseInt(prompt("Operaciones B:\nElija una operacion:\npromedio(1) - porcentaje(2) - salir(3)"));
         while(b != 3){
             if (b == 1){
@@ -33,9 +37,13 @@ while(x != 5){
             if (b == 2){
                 porcentaje ();
             }
+            if (b == 3){
+                alert("Gracias por usar nuestra calculadora");
+            }
+            let b = parseInt(prompt("Operaciones B:\nElija una operacion:\npromedio(1) - porcentaje(2) - salir(3)"));
         }
     }
-    while(x == 3){
+    if(x == 3){
         let c = parseInt(prompt("Area:\nElija una operacion:\nCirculo(1) - Cuadrado(2) - Rectangulo(3) - Triangulo(4) - salir(5)"));
         while(c != 5){
             if (c == 1){
@@ -50,9 +58,12 @@ while(x != 5){
             if (c == 4){
                 areaTriangulo ();
             }
+            if (c == 5){
+                alert("Gracias por usar nuestra calculadora");
+            }
         }
     }
-    while(x == 4){
+    if(x == 4){
         let d = parseInt(prompt("Perimetro:\nElija una operacion:\nCirculo(1) - Cuadrado(2) - Rectangulo(3) - Triangulo(4) - salir(5)"));
         while(d != 5){
             if (d == 1){
@@ -67,14 +78,18 @@ while(x != 5){
             if (d == 4){
                 perimetroTriangulo ();
             }
+            if (d == 5){
+                alert("Gracias por usar nuestra calculadora");
+            }
+
         }
     }
-}
-if (x == 5){
-    alert("Gracias por usar nuestra calculadora");
-}
-else{
-    x = parseInt(prompt("(1)Operaciones A: Suma - Resta - multiplicacion - division.\n(2)Operaciones B: promedio - porcentaje.\n(3)Area: Circulo - Cuadrado - Rectangulo - Triangulo.\n(4)Perimetro: Circulo - Cuadrado - Rectangulo - Triangulo.\n(5)salir"));
+    if (x == 0){
+        alert("Gracias por usar nuestra calculadora");
+    }
+    else{
+        x = parseInt(prompt("(1)Operaciones A: Suma - Resta - multiplicacion - division.\n(2)Operaciones B: promedio - porcentaje.\n(3)Area: Circulo - Cuadrado - Rectangulo - Triangulo.\n(4)Perimetro: Circulo - Cuadrado - Rectangulo - Triangulo.\n(5)salir"));
+    }
 }
 
 // Objetos
@@ -102,7 +117,11 @@ const perimetro = {
 }
 
 // Array
-const ArrayA = [calculosA, calculosB, area, perimetro]
+const operacionesTotales = [calculosA, calculosB, area, perimetro]
+console.log(operacionesTotales.length);
+operacionesTotales.forEach( (oTotal) => {
+    console.log(oTotal)
+})
 
 
 // Funciones
@@ -115,6 +134,7 @@ function suma (){
     }
     alert("La suma total es: " + suma);
     x = parseInt(prompt("(1)Operaciones A: Suma - Resta - multiplicacion - division.\n(2)Operaciones B: promedio - porcentaje.\n(3)Area: Circulo - Cuadrado - Rectangulo - Triangulo.\n(4)Perimetro: Circulo - Cuadrado - Rectangulo - Triangulo.\n(5)salir"));
+
 }
 function resta (){
     let valorA = parseInt(prompt("Ingresar el primer valor a restar"));
@@ -122,6 +142,7 @@ function resta (){
     resta = valorA - valorB;
     alert("La resta total es: " + resta);
     x = parseInt(prompt("(1)Operaciones A: Suma - Resta - multiplicacion - division.\n(2)Operaciones B: promedio - porcentaje.\n(3)Area: Circulo - Cuadrado - Rectangulo - Triangulo.\n(4)Perimetro: Circulo - Cuadrado - Rectangulo - Triangulo.\n(5)salir"));
+
 }
 function multiplicacion (){
     let numero = parseInt(prompt("Ingresar la cantidad de multiplicaciones a realizar"));
@@ -132,6 +153,7 @@ function multiplicacion (){
     }
     alert("La multiplicacion total es: " + multiplicacion);
     x = parseInt(prompt("(1)Operaciones A: Suma - Resta - multiplicacion - division.\n(2)Operaciones B: promedio - porcentaje.\n(3)Area: Circulo - Cuadrado - Rectangulo - Triangulo.\n(4)Perimetro: Circulo - Cuadrado - Rectangulo - Triangulo.\n(5)salir"));
+
 }
 function division (){
     let valorA = parseInt(prompt("Ingresar el primer valor a dividir"));
@@ -150,6 +172,7 @@ function promedio (){
     promedio = suma / numero;
     alert("El promedio total es: " + promedio);
     x = parseInt(prompt("(1)Operaciones A: Suma - Resta - multiplicacion - division.\n(2)Operaciones B: promedio - porcentaje.\n(3)Area: Circulo - Cuadrado - Rectangulo - Triangulo.\n(4)Perimetro: Circulo - Cuadrado - Rectangulo - Triangulo.\n(5)salir"));
+
 }
 function porcentaje (){
     let valorA = parseInt(prompt("Ingresar el porcentaje deseado"));
@@ -157,6 +180,7 @@ function porcentaje (){
         porcentaje = (valorA * valorB) / 100;
     alert("El " + valorA + "% de " + valorB + " es igual a: " + porcentaje);
     x = parseInt(prompt("(1)Operaciones A: Suma - Resta - multiplicacion - division.\n(2)Operaciones B: promedio - porcentaje.\n(3)Area: Circulo - Cuadrado - Rectangulo - Triangulo.\n(4)Perimetro: Circulo - Cuadrado - Rectangulo - Triangulo.\n(5)salir"));
+
 }
 
 // Formulas Area:
@@ -197,12 +221,14 @@ function perimetroCirculo (){
         perimetroCi = 2 * Math.PI  * radio;
     alert("El perimetro del circulo es: " + perimetroCi);
     x = parseInt(prompt("(1)Operaciones A: Suma - Resta - multiplicacion - division.\n(2)Operaciones B: promedio - porcentaje.\n(3)Area: Circulo - Cuadrado - Rectangulo - Triangulo.\n(4)Perimetro: Circulo - Cuadrado - Rectangulo - Triangulo.\n(5)salir"));
+
 }
 function perimetroCuadrado (){
     let lado = parseInt(prompt("Ingresar el lado del cuadrado"));
         perimetroCu = 4 * lado;
     alert("El perimetro del cuadrado es: " + perimetroCu);
     x = parseInt(prompt("(1)Operaciones A: Suma - Resta - multiplicacion - division.\n(2)Operaciones B: promedio - porcentaje.\n(3)Area: Circulo - Cuadrado - Rectangulo - Triangulo.\n(4)Perimetro: Circulo - Cuadrado - Rectangulo - Triangulo.\n(5)salir"));
+
 }
 function perimetroRectangulo (){
     let lado1 = parseInt(prompt("Ingresar la base del rectangulo"));
@@ -210,6 +236,7 @@ function perimetroRectangulo (){
         perimetroR = (2 * lado1) +(2 * lado2);
     alert("El perimetro del rectangulo es: " + perimetroR);
     x = parseInt(prompt("(1)Operaciones A: Suma - Resta - multiplicacion - division.\n(2)Operaciones B: promedio - porcentaje.\n(3)Area: Circulo - Cuadrado - Rectangulo - Triangulo.\n(4)Perimetro: Circulo - Cuadrado - Rectangulo - Triangulo.\n(5)salir"));
+
 }
 function perimetroTriangulo (){
     let lado1 = parseInt(prompt("Ingresar el lado a del triangulo"));
@@ -218,4 +245,5 @@ function perimetroTriangulo (){
         perimetroT = lado1 + lado2 + lado3;
     alert("El perimetro del triangulo es: " + perimetroT);
     x = parseInt(prompt("(1)Operaciones A: Suma - Resta - multiplicacion - division.\n(2)Operaciones B: promedio - porcentaje.\n(3)Area: Circulo - Cuadrado - Rectangulo - Triangulo.\n(4)Perimetro: Circulo - Cuadrado - Rectangulo - Triangulo.\n(5)salir"));
+
 }
